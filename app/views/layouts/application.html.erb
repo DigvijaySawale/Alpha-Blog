@@ -28,9 +28,10 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body style="background-color: lightgrey">
+  <body style="background-color: lightgrey; min-height: 100vh; display: flex; flex-direction: column;">
     <%= render 'layouts/navbar' %>
-    <div id="page-content", data: { turbo: false }>
+    <!-- Page content grows to fill space -->
+    <div id="page-content" style="flex: 1;">
       <%= render 'layouts/messages' %>
       <%= yield %>
     </div>
