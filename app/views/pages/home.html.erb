@@ -1,4 +1,41 @@
-<h1> Welcome to Home Page </h1>
+<div class="container" id="home-container">
+  <div class="jumbotron text-center text-white">
+    <h1 class="display-4"><strong>Alpha Blog</strong></h1>
+    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+    <hr class="my-4">
+    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+    <a class="btn btn-success btn-lg" href="#" role="button">Sign Up</a>
+  </div>
+</div>
 
-<%= link_to "Articles", articles_path%> |
-<%= link_to "About", about_path%>
+<footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+  <div class="container text-center text-white">
+    <small>Copyright  <%= link_to "Digvijay Sawale", "https://github.com/DigvijaySawale/Alpha-Blog", class: "text-white" %></small>
+  </div>
+</footer>
+
+
+<style>
+  #home-container {
+    padding: 30px;
+  }
+
+  .jumbotron {
+    background-image: url('<%= asset_path "blog_bg.jpg" %>');
+    background-size: cover;
+    background-position: center;
+    height: 425px;
+  }
+  html, body {
+    height: 100%;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #sticky-footer {
+    margin-top: auto;
+  }
+</style>

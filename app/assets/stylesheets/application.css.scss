@@ -8,3 +8,7 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+@import "custom";
+body {
+  background-color: lightgrey; /* change to any color */
+}
