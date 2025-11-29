@@ -29,11 +29,14 @@
   </head>
 
   <body style="background-color: lightgrey">
-    <%= render 'layouts/messages' %>
     <%= render 'layouts/navbar' %>
+    <%= render 'layouts/messages' %>
     <%= yield %>
 
     <!-- Bootstrap 4.4.1 JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
+
     <script 
       src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js" 
       integrity="sha384-6khuMg9tY5p0n3QMfHxVjG6RlmW0QtgKtWFTZO3hJ8Gv3f5DEX0lYy0n0qU8n0Yl" 
