@@ -1,27 +1,30 @@
-<% if @article.errors.any?%>
-  <h2> Error: </h2>
-  <ul>
-    <% @article.errors.full_messages.each do |message| %>
+<div class="container">
+  <%# errors moved to partial %>
+  <div class="row justify-content-center">
+  <%# <%= form_with scope: :article,data: { turbo: false }, url: articles_path, local: true do |f|%> 
+    <div class="col-10">
+      <%= render "shared/errors" %>
+      <%= form_with(model: @article, local: true, class: "shadow p-3 mb-3 bg-secondary rounded" , data: { turbo: false })  do |f|%>
+        <div class="form-group row">
+          <%= f.label :title, class: "col-2 col-form-label text-light" %>
+          <div class= "col-10">
+            <%= f.text_field :title, class: "form-control shadow rounded", placeholder: "Title of Article" %>
+          </div>
+        </div>
+        
+        <div class="form-group row">
+          <%= f.label :description, class: "col-2 col-form-label text-light" %>
+          <div class= "col-10">
+            <%= f.text_area :description, rows:10 , class: "form-control shadow rounded", placeholder: "Description of Article" %>
+          </div>
+        </div>
+
+        <div class="form-group row justify-content-center">
+          <%= f.submit class:"btn btn-outline-light btn-lg"%>
+        </div>
+      <% end %>
+    </div>
+    <%= link_to "[ Cancel and Return to Articles ]", articles_path, class: "text-danger" %>
+  </div>
   
-    <li><%= message%></li>
-  <%end%>
-  </ul>
-<%end%>
-
-
-<%# <%= form_with scope: :article,data: { turbo: false }, url: articles_path, local: true do |f|%> 
-<%= form_with(model: @article, local: true, data: { turbo: false })  do |f|%>
-  <p>
-    <%= f.label :title %>
-    <%= f.text_field :title%>
-  </p>
-
-  <p>
-    <%= f.label :description%>
-    <%= f.text_area :description%>
-  </p>
-
-  <p>
-    <%= f.submit%>
-  </p>
-<%end%>
+</div>
