@@ -2,3 +2,6 @@
 import { application } from "controllers/application"
 import { eagerLoadControllersFrom } from "@hotwired/stimulus-loading"
 eagerLoadControllersFrom("controllers", application)
+document.addEventListener("turbo:load", function() {
+  $('.dropdown-toggle').dropdown(); // Re-initialize all dropdowns
+});

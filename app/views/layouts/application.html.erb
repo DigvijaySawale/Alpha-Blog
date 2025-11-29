@@ -30,8 +30,11 @@
 
   <body style="background-color: lightgrey">
     <%= render 'layouts/navbar' %>
-    <%= render 'layouts/messages' %>
-    <%= yield %>
+    <div id="page-content", data: { turbo: false }>
+      <%= render 'layouts/messages' %>
+      <%= yield %>
+    </div>
+    <%= render 'layouts/footer' %>
 
     <!-- Bootstrap 4.4.1 JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
