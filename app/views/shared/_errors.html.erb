@@ -1,8 +1,8 @@
-<% if @article.errors.any? %>
+<% if obj.errors.any? %>
   <div class="alert alert-warning alert-dismissible fade show" role="alert" data-controller="bootstrap-alert">
-    <h4 class="alert-heading">Errors: </h4>
+    <h4 class="alert-heading">Alert! You got the errors: </h4>
     <ul>
-      <% @article.errors.full_messages.each do |message| %>
+      <% obj.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
     </ul>
