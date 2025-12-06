@@ -47,7 +47,6 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    binding.pry
     @user.destroy
     # to remove current session
     session[:user_id] = nil
