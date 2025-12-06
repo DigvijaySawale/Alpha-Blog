@@ -19,7 +19,9 @@
             Articles
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <%= link_to "Create new article", new_article_path, class: "dropdown-item",data: { turbo: false } %>
+            <% if logged_in? %>
+              <%= link_to "Create new article", new_article_path, class: "dropdown-item",data: { turbo: false } %>
+            <% end %>
             <%= link_to "View Artilces",  articles_path, class: "dropdown-item",data: { turbo: false } %>
             <div class="dropdown-divider"></div>
             <%= link_to "Something Else", "#", class: "dropdown-item" %>
