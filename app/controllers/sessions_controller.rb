@@ -4,9 +4,23 @@ class SessionsController < ApplicationController
   end
 
   def create 
-    binding.pry
+    # binding.pry
+    user = User.find_by(email: params[:session][:email].downcase)
+
+    if user && user.authenticate(params[:session][:password])
+      session[:user_id] = user.id
+      flash[:notice] = "Logged in Successfully"
+      redirect_to user
+    else
+      flash.now[:alert] = "Something went wrong!"
+      render 'new'
+    end
   end
 
   def destroy
+    # binding.pry
+    session[:user_id] = nil
+    flash[:notice] = "Logged out"
+    redirect_to root_path
   end
 end 
