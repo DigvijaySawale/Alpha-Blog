@@ -22,7 +22,9 @@ class ArticlesController < ApplicationController
 
     # @article = Article.new(params.require(:article).permit(:title, :description))
     @article = Article.new(article_params)
-    @article.user = User.first
+    # @article.user = User.first
+    #adding current logged in user to set article user_id
+    @article.user = current_user
     if @article.save
       # redirect_to articles_path
       flash[:notice] = "Article was created successfully"
