@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :show]
+  before_action :require_user, only: [:edit, :update]
+  before_action :validate_current_user, only: [:edit, :update]
   
   def index 
     # @users = User.all
@@ -51,5 +53,12 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def validate_current_user
+    if @user != current_user
+      flash[:alert] = "You can edit or delete only your own profile"
+      redirect_to @user 
+    end
   end
 end
