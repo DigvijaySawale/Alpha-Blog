@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :update, :show]
+  before_action :set_user, only: [:edit, :update, :show, :destroy]
   before_action :require_user, only: [:edit, :update]
-  before_action :validate_current_user, only: [:edit, :update]
+  before_action :validate_current_user, only: [:edit, :update, :destroy]
   
   def index 
     # @users = User.all
@@ -44,6 +44,15 @@ class UsersController < ApplicationController
     # @articles = @user.articles
     @articles = @user.articles.paginate(page: params[:page], per_page: 2)
 
+  end
+
+  def destroy
+    binding.pry
+    @user.destroy
+    # to remove current session
+    session[:user_id] = nil
+    flash[:notice] = "Account and all associated articles are successfully deleted"
+    redirect_to root_path
   end
 
   private
