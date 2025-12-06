@@ -9,7 +9,7 @@ class ArticlesController < ApplicationController
 
   def index 
     # @articles = Article.all
-    @articles = Article.paginate(page: params[:page], per_page: 2)
+    @articles = Article.paginate(page: params[:page], per_page: 5)
   end
 
   def new
@@ -53,6 +53,7 @@ class ArticlesController < ApplicationController
   def destroy
     # @article = Article.find(params[:id]) #added before action
     @article.destroy
+    flash[:notice] = "Article was deleted successfully"
     redirect_to articles_path
   end
 
@@ -68,7 +69,7 @@ class ArticlesController < ApplicationController
 
   def validate_current_user
     if (current_user != @article.user && !current_user.admin?)
-      flash[:alert] = "You can only edit or delete your own article"
+      flash[:alert] = "You can edit or delete only your own article"
       redirect_to @article
     end
   end

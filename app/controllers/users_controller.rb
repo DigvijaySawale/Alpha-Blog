@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   
   def index 
     # @users = User.all
-    @users = User.paginate(page: params[:page], per_page: 2)
+    @users = User.paginate(page: params[:page], per_page: 5)
 
   end 
 
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     # binding.pry
     #@user = User.find(params[:id])   ##added to before action
     if @user.update(user_params)
-      flash[:notice] = "User Details was updated successfully"
+      flash[:notice] = "User Details updated successfully"
       redirect_to @user
     else
       render 'edit'
@@ -51,7 +51,7 @@ class UsersController < ApplicationController
     # to remove current session
     session[:user_id] = nil if @user == current_user
     flash[:notice] = "Account and all associated articles are successfully deleted"
-    redirect_to root_path
+    redirect_to users_path
   end
 
   private
